@@ -16,4 +16,12 @@ export class NoteService {
   public store(note: Note) {
     return this.http.post('http://localhost:8080/notes', note);
   }
+
+  public edit(newNote) {
+    return this.http.put('http://localhost:8080/notes/' + newNote.id + '/edit', newNote);
+  }
+
+  public delete(id: number) {
+    return this.http.delete('http://localhost:8080/notes/' + id);
+  }
 }

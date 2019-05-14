@@ -1,11 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
+  <h3>Crear</h3>
   <input type="text" [(ngModel)]="noteTitle" placeholder="Title"> <br><br>
   <textarea [(ngModel)]="noteDescription" placeholder="Description"></textarea> <br>
   <button (click)="save()">Add</button>
   <ul>
     <li *ngFor="let note of notes">
-      {{ note.title }}
+      {{ note.title }} <button (click)="selectNote(note)">Editar</button> <button (click)="delete(note.id)">Eliminar</button>
     </li>
   </ul>
+
+  <div *ngIf="editMode">
+    <h4>Editar</h4>
+    <input type="text" [(ngModel)]="selectedNote.title" placeholder="Title"> <br><br>
+    <textarea [(ngModel)]="selectedNote.description" placeholder="Description"></textarea> <br>
+    <button (click)="edit()">Editar</button>
+  </div>
 </div>
